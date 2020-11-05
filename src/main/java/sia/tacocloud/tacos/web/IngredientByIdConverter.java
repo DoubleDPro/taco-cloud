@@ -6,8 +6,10 @@ import org.springframework.stereotype.Component;
 import sia.tacocloud.tacos.Ingredient;
 import sia.tacocloud.tacos.data.IngredientRepository;
 
+import java.util.Optional;
+
 @Component
-public class IngredientByIdConverter implements Converter<String, Ingredient> {
+public class IngredientByIdConverter implements Converter<String, Optional<Ingredient>> {
 
     private IngredientRepository ingredientRepository;
 
@@ -17,7 +19,7 @@ public class IngredientByIdConverter implements Converter<String, Ingredient> {
     }
 
     @Override
-    public Ingredient convert(String id) {
+    public Optional<Ingredient> convert(String id) {
         return ingredientRepository.findById(id);
     }
 }
